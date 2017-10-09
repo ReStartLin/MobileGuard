@@ -96,22 +96,22 @@ public class VersionUpdateUtils {
                 versionEntity.versioncode = jsonObject.getString("code");
                 versionEntity.description = jsonObject.getString("des");
                 versionEntity.apkurl = jsonObject.getString("apkurl");
-                Log.d("Tag", "getCloudVersion 本地版本为: " + mVersion);
+                //Log.d("Tag", "getCloudVersion 本地版本为: " + mVersion);
                 if (!mVersion.equals(versionEntity.versioncode)) {
                     //版本不同 需升级
 //                    Toast.makeText(context, versionEntity.description, Toast.LENGTH_SHORT).show();
-                    handler.sendEmptyMessage(MESSAGE_SHOW_ERROR);
-                }else {
-                    enterHome();
+                   // handler.sendEmptyMessage(MESSAGE_SHOW_ERROR);
+                    System.out.print(versionEntity.description
+                    );
+                    DownloadUtils downloadUtils = new DownloadUtils();
+                    downloadUtils.downloadApk(versionEntity.apkurl,"mobileguard.apk",context);
                 }
-
             }
-
         } catch (IOException e) {
-            handler.sendEmptyMessage(MESSAGE_IO_ERROR);
+            //handler.sendEmptyMessage(MESSAGE_IO_ERROR);
             e.printStackTrace();
         } catch (JSONException e) {
-            handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
+           // handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
             e.printStackTrace();
         }
 

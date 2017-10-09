@@ -21,5 +21,6 @@
         </activity>
         <activity android:name=".m1home.HomeActivity"></activity>
     </application>
-
+    <uses-configuration android:name="android.permission.INTERNET"/>
+    <uses-configuration android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>
