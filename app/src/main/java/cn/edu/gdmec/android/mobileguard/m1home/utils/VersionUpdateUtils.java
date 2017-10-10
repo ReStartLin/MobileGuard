@@ -100,18 +100,14 @@ public class VersionUpdateUtils {
                 if (!mVersion.equals(versionEntity.versioncode)) {
                     //版本不同 需升级
 //                    Toast.makeText(context, versionEntity.description, Toast.LENGTH_SHORT).show();
-                   // handler.sendEmptyMessage(MESSAGE_SHOW_ERROR);
-                    System.out.print(versionEntity.description
-                    );
-                    DownloadUtils downloadUtils = new DownloadUtils();
-                    downloadUtils.downloadApk(versionEntity.apkurl,"mobileguard.apk",context);
+                    handler.sendEmptyMessage(MESSAGE_SHOW_ERROR);
                 }
             }
         } catch (IOException e) {
-            //handler.sendEmptyMessage(MESSAGE_IO_ERROR);
+            handler.sendEmptyMessage(MESSAGE_IO_ERROR);
             e.printStackTrace();
         } catch (JSONException e) {
-           // handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
+            handler.sendEmptyMessage(MESSAGE_JSON_ERROR);
             e.printStackTrace();
         }
 
@@ -125,15 +121,17 @@ public class VersionUpdateUtils {
     private void showUpdateDialog(final VersionEntity versionEntity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("检查到有新版本：" + versionEntity.versioncode);
+        builder.setMessage(versionEntity.description);
         builder.setCancelable(false);//设置不能被忽视
         builder.setIcon(R.mipmap.ic_launcher_round);
         builder.setPositiveButton("立即升级", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Log.d("Tag", "getCloudVersion 网络版本为: " + versionEntity.versioncode);
+               /* Log.d("Tag", "getCloudVersion 网络版本为: " + versionEntity.versioncode);
                 DownloadUtils downloadUtils = new DownloadUtils();
                 downloadUtils.downloadApk(versionEntity.apkurl, "mobileguard.apk", context);
-                Log.d("Tag", "下载成功");
+                Log.d("Tag", "下载成功");*/
+               downloadNewApk(versionEntity.apkurl);
             }
         });
         builder.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
@@ -151,5 +149,9 @@ public class VersionUpdateUtils {
      */
     private void enterHome() {
         handler.sendEmptyMessage(MESSAGE_ENTERHOME);
+    }
+    private void downloadNewApk(String apkurl){
+        DownloadUtils downloadUtils = new DownloadUtils();
+        downloadUtils.downloadApk(apkurl,"mobileguard.apk",context);
     }
 }

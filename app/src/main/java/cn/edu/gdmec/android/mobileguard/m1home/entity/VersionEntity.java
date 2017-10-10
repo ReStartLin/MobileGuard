@@ -1,8 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m1home.entity;
 
-/**
- * Created by Administrator on 2017/9/17.
- */
 //记录版本信息的类
 public class VersionEntity {
     /*服务器版本号*/
