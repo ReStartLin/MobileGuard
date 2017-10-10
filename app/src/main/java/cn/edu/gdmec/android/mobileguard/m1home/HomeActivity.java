@@ -87,7 +87,7 @@ public class HomeActivity extends AppCompatActivity {
                                 savePswd(affirmPwsd);
                                 setupPasswordDialog.dismiss();
                                 showInterPswdDialog();
-                            //***************
+                            //*************
                             }else{
                                 Toast.makeText(HomeActivity.this,"两次密码不一致!",Toast.LENGTH_LONG).show();
                             }
