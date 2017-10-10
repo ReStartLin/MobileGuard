@@ -3,7 +3,7 @@ package cn.edu.gdmec.android.mobileguard.m2theftguard.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+//MD5摘要算法
 public class MD5Utils {
 
     public static String encode(String text){

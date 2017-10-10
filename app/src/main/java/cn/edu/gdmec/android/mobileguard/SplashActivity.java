@@ -20,6 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         mTvVersion = (TextView) findViewById(R.id.tv_splash_version);
         mTvVersion.setText("版本号:"+mVersion);
         final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(mVersion,SplashActivity.this);
+        // 开启线程判断网络版本
         new Thread(){
             @Override
             public void run(){
@@ -27,20 +28,6 @@ public class SplashActivity extends AppCompatActivity {
                 versionUpdateUtils.getCloudVersion();
             }
         }.start();
-
-
-
-
-     /*   new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                versionUpdateUtils.getCloudVersion();
-            }
-        }.start();
-        System.out.print("sss");*/
-
-
 
 
 
