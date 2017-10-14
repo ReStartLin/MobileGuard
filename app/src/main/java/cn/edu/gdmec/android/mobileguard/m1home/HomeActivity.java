@@ -3,10 +3,8 @@ package cn.edu.gdmec.android.mobileguard.m1home;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.content.SharedPreferencesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,10 +13,10 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdaper;
+import cn.edu.gdmec.android.mobileguard.m2theftguard.Setup1Activty;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetupPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
-import static android.R.id.edit;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
@@ -117,7 +115,8 @@ public class HomeActivity extends AppCompatActivity {
                 }else if(password.equals(MD5Utils.encode(mInPswdDialog
                         .getPassword()))){
                     mInPswdDialog.dismiss();
-                    Toast.makeText(HomeActivity.this,"可以进入手机防盗模块",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(HomeActivity.this,"可以进入手机防盗模块",Toast.LENGTH_LONG).show();
+                    startActivity(Setup1Activty.class);
                 }else {
                     //对话框消失
                     mInPswdDialog.dismiss();
