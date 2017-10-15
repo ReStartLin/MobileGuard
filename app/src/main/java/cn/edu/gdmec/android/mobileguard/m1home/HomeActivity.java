@@ -141,7 +141,7 @@ public class HomeActivity extends AppCompatActivity {
         edit.commit();
     }
 
-//获取密码
+//获取密码的方法
     private String getPassword(){
         String password = msharedPreferences.getString("PhoneAntiTheftPWD",null);
         if(TextUtils.isEmpty(password)){
