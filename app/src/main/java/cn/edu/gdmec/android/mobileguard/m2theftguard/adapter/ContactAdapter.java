@@ -19,8 +19,8 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 public class ContactAdapter extends BaseAdapter {
     private List<ContactInfo> contactInfos;
     private Context context;
-//    TextView mNameTV;
-//    TextView mPhoneTV;
+    private TextView mNameTV;
+    private TextView mPhoneTV;
     public ContactAdapter(List<ContactInfo> contactInfos,Context context){
         super();
         this.contactInfos = contactInfos;
@@ -44,25 +44,26 @@ public class ContactAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        ViewHolder holder = null;
+//        ViewHolder holder = null;
         if (view == null){
             view = View.inflate(context, R.layout.item_list_contact_select,null);
-            holder = new ViewHolder();
-            holder.mNameTV = (TextView) view.findViewById(R.id.tv_name1);
-            holder.mPhoneTV = (TextView) view.findViewById(R.id.tv_phone);
-            view.setTag(holder);
+//            holder = new ViewHolder();
+//            holder.mNameTV = (TextView) view.findViewById(R.id.tv_name1);
+//            holder.mPhoneTV = (TextView) view.findViewById(R.id.tv_phone);
+            mNameTV = (TextView) view.findViewById(R.id.tv_name1);
+            mPhoneTV = (TextView) view.findViewById(R.id.tv_phone);
+//            view.setTag(holder);
         }
-        Log.d("Tag", holder.mNameTV == null?"true":"false");
-        Log.d("Tag", holder.mPhoneTV == null?"true":"false");
-        holder.mNameTV.setText(contactInfos.get(position).name);
-        holder.mPhoneTV.setText(contactInfos.get(position).phone);
-        System.out.print("x");
-        System.out.print("x");
-        System.out.print("x");
+        Log.d("Tag", mNameTV == null?"true":"false");
+        Log.d("Tag", mPhoneTV == null?"true":"false");
+        mNameTV.setText(contactInfos.get(position).name);
+        mPhoneTV.setText(contactInfos.get(position).phone);
+//        holder.mNameTV.setText(contactInfos.get(position).name);
+//        holder.mPhoneTV.setText(contactInfos.get(position).phone);
         return view;
     }
-    static class ViewHolder {
-        TextView mNameTV;
-        TextView mPhoneTV;
-    }
+//    static class ViewHolder {
+//        public TextView mNameTV;
+//        public TextView mPhoneTV;
+//    }
 }
