@@ -101,6 +101,7 @@ public class VersionUpdateUtils {
                     //版本不同 需升级
 //                    Toast.makeText(context, versionEntity.description, Toast.LENGTH_SHORT).show();
                     handler.sendEmptyMessage(MESSAGE_SHOW_ERROR);
+//                    handler.sendEmptyMessage(MESSAGE_ENTERHOME);
                 }
             }
         } catch (IOException e) {
