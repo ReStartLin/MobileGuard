@@ -31,8 +31,8 @@ public class App extends Application {
             TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
             //为了测试在手机序列号上的data 已模拟sim卡被更换的情况
             String realsim = tm.getSimSerialNumber();
-            //测试用
-            realsim="999";
+//            //测试用
+//            realsim="999";
             if (bindsim.equals(realsim)){
                 Log.i("", "correctSIM: sim卡未发生变化，还是您的手机");
             }else{
