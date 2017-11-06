@@ -57,7 +57,10 @@ public class AppInfoParser {
                 CertificateFactory cf = CertificateFactory.getInstance("X.509");
                 X509Certificate cert = (X509Certificate) cf.generateCertificate(
                         new ByteArrayInputStream(ss));
-                appinfo.certifi=cert.getIssuerDN().toString();
+                if (cert!=null){
+                    appinfo.certifi=cert.getIssuerDN().toString();
+                }
+
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             } catch (CertificateException e) {
