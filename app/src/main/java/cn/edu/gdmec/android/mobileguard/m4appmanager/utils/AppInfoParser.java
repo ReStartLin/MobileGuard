@@ -5,7 +5,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.security.cert.CertificateException;
@@ -16,10 +15,6 @@ import java.util.Date;
 import java.util.List;
 
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
-
-/**
- * Created by Administrator on 2017/11/5.
- */
 public class AppInfoParser {
     /**
      * 获取手机里面的所有的应用程序
