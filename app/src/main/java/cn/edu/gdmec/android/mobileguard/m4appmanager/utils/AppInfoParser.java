@@ -1,10 +1,13 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceCategory;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.security.cert.CertificateException;
@@ -79,6 +82,21 @@ public class AppInfoParser {
             } catch (PackageManager.NameNotFoundException e) {
                     e.printStackTrace();
             }
+            //应用activityinfo
+            PackageInfo packinfo3;
+            try {
+                packinfo3 = pm.getPackageInfo(packname,PackageManager.GET_ACTIVITIES);
+                ActivityInfo[] activityInfos =  packinfo3.activities;
+                if (activityInfos != null) {
+                    for (ActivityInfo info : activityInfos) {
+                        appinfo.activityInfo = appinfo.activityInfo + info.name + "\n";
+                    }
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
             //应用程序安装的位置
             int flags = packInfo.applicationInfo.flags;//二进制映射 大bit-map
             if ((ApplicationInfo.FLAG_EXTERNAL_STORAGE & flags)!=0){
