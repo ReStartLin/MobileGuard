@@ -35,5 +35,4 @@ public class DownloadUtils {
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         long mTaskid = downloadManager.enqueue(request);
     }
-
 }

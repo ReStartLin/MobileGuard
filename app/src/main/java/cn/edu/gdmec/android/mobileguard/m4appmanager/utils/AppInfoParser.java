@@ -6,16 +6,17 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.preference.PreferenceCategory;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 public class AppInfoParser {
@@ -29,6 +30,7 @@ public class AppInfoParser {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> packageInfos = pm.getInstalledPackages(0);
         List<AppInfo> appInfos = new ArrayList<AppInfo>();
+
         for (PackageInfo packInfo:packageInfos) {
             AppInfo appinfo = new AppInfo();
             String packname = packInfo.packageName;
@@ -47,7 +49,8 @@ public class AppInfoParser {
             String version = packInfo.versionName;
             appinfo.version = version;
             //应用的安装时间
-            appinfo.installTime = new Date(packInfo.firstInstallTime).toString();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            appinfo.installTime = sdf.format(new Date(packInfo.firstInstallTime));
             //应用的签名
             try {
                 PackageInfo packinfo = pm.getPackageInfo(packname, PackageManager.GET_SIGNATURES);
