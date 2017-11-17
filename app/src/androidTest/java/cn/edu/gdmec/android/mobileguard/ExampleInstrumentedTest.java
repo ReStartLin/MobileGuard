@@ -500,5 +500,6 @@ public class ExampleInstrumentedTest {
         if(!result.exists()){
             throw new Exception("Can't find virus.");
         }
+
     }
 }
