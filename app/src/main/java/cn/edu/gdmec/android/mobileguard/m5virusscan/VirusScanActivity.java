@@ -37,6 +37,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                     update();
                     break;
                 case UPDATE_VERSION:
+                    Log.d("Tag", "handleMessage:-------------- "+antivirusdao);
                     myversionTV.setText("病毒数据库版本:"+antivirusdao.getVersion());
                     break;
 
@@ -48,7 +49,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_virus_scan);
         mSP = getSharedPreferences("config",MODE_PRIVATE);
-
+        antivirusdao = new AntiVirusDao(this.getApplicationContext());
         initView();
     }
     private void update(){
@@ -57,7 +58,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         if (!flag){
             return;
         }
-        antivirusdao = new AntiVirusDao(this.getApplicationContext());
+
         String myDbversion = antivirusdao.getVersion();
         Log.d("Tag", "本地数据库版本为: "+myDbversion);
         handler.sendEmptyMessage(UPDATE_VERSION);
