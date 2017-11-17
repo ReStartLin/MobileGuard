@@ -148,7 +148,7 @@ public class DBVersionUpdateUtils {
                             fis.close();
                             fos.close();
                             Log.d("Tag", "run: ---------更新成功---");
-                            parentHandler.sendEmptyMessage(101);
+                            parentHandler.sendEmptyMessage(100);
                         } catch (IOException e) {
                             Log.d("Tag", "run: IOException---------");
                             e.printStackTrace();

@@ -28,6 +28,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     private SharedPreferences mSP;
     private AntiVirusDao antivirusdao;
     private DBVersionUpdateUtils dbv;
+    private String localVersion = "";
     private boolean flag ;//本地数据库是否存在
     private Handler handler = new Handler(){
         @Override
@@ -38,7 +39,8 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                     break;
                 case UPDATE_VERSION:
                     Log.d("Tag", "handleMessage:-------------- "+antivirusdao);
-                    myversionTV.setText("病毒数据库版本:"+antivirusdao.getVersion());
+//                    myversionTV.setText("病毒数据库版本:"+antivirusdao.getVersion());
+                    myversionTV.setText("病毒数据库版本:"+localVersion);
                     break;
 
             }
@@ -60,6 +62,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         }
 
         String myDbversion = antivirusdao.getVersion();
+        localVersion = myDbversion;
         Log.d("Tag", "本地数据库版本为: "+myDbversion);
         handler.sendEmptyMessage(UPDATE_VERSION);
         if (myDbversion != null){
