@@ -37,7 +37,7 @@ public class AntiVirusDao {
     }
     public String getVersion(){
         SQLiteDatabase db = SQLiteDatabase.openDatabase(dbname,null,SQLiteDatabase.OPEN_READONLY);
-        Cursor cursor = db.rawQuery("select major,minor,build from version where rowid=?",new String[]{"1"});
+        Cursor cursor = db.rawQuery("select major,minor,build from version",new String[]{});
         if (cursor.moveToNext()){
             return cursor.getInt(0)+"."+cursor.getInt(1)+"."+cursor.getInt(2);
         }
