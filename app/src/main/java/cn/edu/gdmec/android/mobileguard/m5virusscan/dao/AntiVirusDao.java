@@ -41,6 +41,8 @@ public class AntiVirusDao {
         if (cursor.moveToNext()){
             return cursor.getInt(0)+"."+cursor.getInt(1)+"."+cursor.getInt(2);
         }
+        cursor.close();
+        db.close();
         return "";
     }
 }
