@@ -48,11 +48,9 @@ public class MD5Utils {
                 String hex = Integer.toHexString(number);
                 if (hex.length()==1){
                     sb.append("0"+hex);
-
                 }else {
                     sb.append(hex);
                 }
-
             }
             return sb.toString();
         } catch (Exception e) {
