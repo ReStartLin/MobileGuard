@@ -96,6 +96,7 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_REMOVED);
         intentFilter.addDataScheme("package");
         registerReceiver(receciver,intentFilter);
+
         initView();
     }
 

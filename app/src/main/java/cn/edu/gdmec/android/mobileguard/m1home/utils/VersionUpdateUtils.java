@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -19,11 +21,13 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.HomeActivity;
 import cn.edu.gdmec.android.mobileguard.m1home.entity.VersionEntity;
+import cn.edu.gdmec.android.mobileguard.m5virusscan.utils.DownloadDbUtils;
 
 /**
  * Created by Administrator on 2017/9/17.
@@ -152,7 +156,24 @@ public class VersionUpdateUtils {
         handler.sendEmptyMessage(MESSAGE_ENTERHOME);
     }
     private void downloadNewApk(String apkurl){
-        DownloadUtils downloadUtils = new DownloadUtils();
+        DownloadUtils downloadUtils = new DownloadUtils(context, new DownloadUtils.DownloadCallback() {
+            @Override
+            public void afterDownload(String filename) {
+                installApk(context,filename);
+            }
+        });
         downloadUtils.downloadApk(apkurl,"mobileguard.apk",context);
     }
+
+    private void installApk(Activity context, String filename) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.setDataAndType(Uri.fromFile(
+                new File(
+                        Environment.getExternalStoragePublicDirectory("/download/").getPath()
+                                +"/"+filename)
+        ),"application/vnd.android.package-archive");
+        context.startActivityForResult(intent,0);
+    }
+
 }

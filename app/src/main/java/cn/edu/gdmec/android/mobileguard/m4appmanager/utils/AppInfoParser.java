@@ -91,9 +91,9 @@ public class AppInfoParser {
                 packinfo3 = pm.getPackageInfo(packname,PackageManager.GET_ACTIVITIES);
                 ActivityInfo[] activityInfos =  packinfo3.activities;
                 if (activityInfos != null) {
-                    for (ActivityInfo info : activityInfos) {
-                        appinfo.activityInfo = appinfo.activityInfo + info.name + "\n";
-                    }
+                        for (ActivityInfo info : activityInfos) {
+                            appinfo.activityInfo = appinfo.activityInfo + info.name + "\n";
+                        }
                 }
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
