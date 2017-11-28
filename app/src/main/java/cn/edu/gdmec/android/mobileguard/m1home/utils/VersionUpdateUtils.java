@@ -162,7 +162,7 @@ public class VersionUpdateUtils {
                 installApk(context,filename);
             }
         });
-        downloadUtils.downloadApk(apkurl,"mobileguard.apk",context);
+        downloadUtils.downloadApk(apkurl,"app2.apk",context);
     }
 
     private void installApk(Activity context, String filename) {
@@ -174,6 +174,7 @@ public class VersionUpdateUtils {
                                 +"/"+filename)
         ),"application/vnd.android.package-archive");
         context.startActivityForResult(intent,0);
+//        enterHome();
     }
 
 }
